@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% load wagtailimages_tags %}
+
+
+{% block content %}
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="contain">
+      <h1 class="cc-inner-title">{{ page.title }}</h1>
+      {% if page.subtitle %}
+        <p class="cc-inner-subtitle">{{ page.subtitle }}</p>
+      {% endif %}
+    </div>
+  </div>
+
+  <p class="cc-inner-subtitle cc-service-subtitle col-lg-20"></p>
+
+  <div class="row mt-4" > 
+    <div class="contain">
+      <p class="cc-inner-subtitle">Datenkategorien:
+        <br>
+      </p>
+    </div>
+    
+    <div class="contain">
+      {% for cat in Datenkategorie %} 
+		<button type="button" class="btn btn-outline-secondary" >
+		<a href="?category={{ cat.slug }}">{{ cat.name }} </a>   </button>
+		{% endfor %}
+    </div>
+  </div>
+  <br>
+  <div class="contain">
+    <p class="cc-inner-subtitle cc-service-subtitle col-lg-20"></p>
+  </div>
+
+
+  <div class="row mt-4">
+    {% for card in blog_posts %} 
+    <div class="col-md-6 d-flex align-items-stretch">
+      <div class="card mb-3 text-center">
+        <a href="{{ card.url }}">
+          <picture>
+            {% image card.datensatz_bild fill-573x369 as card_img %}
+            <img src="{{ card_img.url }}" alt="{{ card_img.alt }}" class="lazy card-img-top">
+          </picture>
+        </a>
+        <div class="card-body py-3 px-3">
+          <a href="{{ card.url }}">
+            <h5 class="card-title">{{ card.title }}</h5>
+            {% if card.description %}
+              <p class="card-description"> {{ card.description }}</p>
+            {% endif %}
+            
+            {% if card.groesse_datensatz %}
+            <p class="card-description"> Größe: {{ card.groesse_datensatz }}</p>
+          {% endif %}
+
+          {% if card.dateiformat %}
+            <p class="card-description"> Dateiformat: {{ card.dateiformat }}</p>
+          {% endif %}
+            
+          {% if card.datumhochgeladen %}
+            <p class="card-description"> Hochgeladen am: {{ card.datumhochgeladen }}</p>
+          {% endif %}
+          
+          {% if card.Datenkategorie.count %}
+          <div > 
+            <p class="card-description">
+              Datenkategorie:
+              {% for tag in card.Datenkategorie.all %}
+                
+                  <a href="{{ card.url }}?tag={{ tag.slug }}">{{ tag }}</a>
+              {% endfor %}
+            </p>
+          </div>
+          {% endif %}
+          </a>
+
+          <p class="card-text">
+            <a href="{{ card.url }}" class="btn btn-link d-inline">Zum Datensatz</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+
+  <p class="cc-inner-subtitle cc-service-subtitle col-lg-20"></p>
+    <div class="contain">
+      <p class="cc-inner-subtitle">Tags:
+        <br>
+        <br>
+      </p>
+    </div>
+    <div class="contain">
+      {% for tag in Tags %}  
+      <button type="button" class="btn btn-outline-secondary" >
+        <a href="?tag={{ tag.slug }}"> {{ tag }} </a>   </button>     
+      {% endfor %}
+    </div>
+    </p>
+    
+
+{% endblock %}
+
+<!-- 
+<button type="button" class="btn btn-outline-secondary" >
+  <a href="?tag={{ tag.slug }}"> {{ tag }} </a>   </button>
+  -->

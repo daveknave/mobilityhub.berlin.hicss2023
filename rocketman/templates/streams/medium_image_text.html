@@ -1,0 +1,22 @@
+{% load wagtailimages_tags %}
+
+<br>
+
+
+<div class="row">
+  <div class="col-md-8 offset-md-2">
+    <div class="cc-simple-richtext">
+
+
+      <picture>
+        {% image self.image fill-1500x750 as img %}
+        <img src="{{ img.url }}" alt="{{ img.alt }}" style='width: 100%; height: auto;' >
+      </picture>
+
+
+      {{ self.text }}
+    </div>
+  </div>
+</div>
+<br>
+<br>

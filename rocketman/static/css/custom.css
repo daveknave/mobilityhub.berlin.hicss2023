@@ -1,0 +1,55 @@
+.tag_2 {
+  margin: 10px 5px 5px 5px ; 
+  margin-bottom: 20px;
+  padding-left:0px;
+  padding-bottom: 10px;
+  text-align:center; 
+  width: 80%;
+}
+
+
+.tag_1 {
+         margin: 10px 10px 5px 5px ; 
+         border: 1px rgb(63, 63, 63) solid ;
+         border-radius: 15px;
+         text-align:center; 
+}
+
+
+.tag_3 {
+  float:left;
+  width: 33,33%;
+}
+
+
+/* unvisited link */
+.nav-link a:link {
+  color: dimgray ;
+  background-color: transparent;
+}
+
+/* visited link */
+.nav-link a:visited {
+  color: dimgray;
+  background-color: transparent;
+}
+
+/* mouse over link */
+.nav-link a:hover {
+  color: rgb(65, 65, 65);
+  background-color:rgb(197, 197, 197);
+}
+
+/* selected link */
+.nav-link a:active {
+  color: dimgray;
+  background-color: transparent;
+}
+
+
+.contain{
+
+  width: 100%;
+  display: block;
+  text-align: center;
+}

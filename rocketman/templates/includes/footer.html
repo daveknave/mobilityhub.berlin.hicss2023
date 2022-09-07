@@ -1,0 +1,75 @@
+{% load static menu_tags wagtailcore_tags  %}
+{% get_menu "header" as navigation %}
+
+
+  <section class="py-4 mt-lg-5 mt-0" style='background-color: #4b4b4b; background-image: url("{% static 'images/contact-overlay.png' %}");'>
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-8 text-lg-left text-center">
+          <h2 class="h2 cc-contact-footer-h2">
+            {{ settings.site_settings.FooterCTASettings.title }}
+          </h2>
+          <p class="cc-contact-footer-p mb-0">
+            {{ settings.site_settings.FooterCTASettings.subtitle }}
+          </p>
+        </div>
+        <div class="col-lg-4 text-lg-right text-center">
+          <a href="{% if settings.site_settings.FooterCTASettings.button_internal_page %}{{ settings.site_settings.FooterCTASettings.button_internal_page.url }}{% elif settings.site_settings.FooterCTASettings.button_external_page %}{{ settings.site_settings.FooterCTASettings.button_external_page }}{% else %}/{% endif %}" target="_blank" class="btn btn-light btn-lg mt-lg-0 mt-3">
+            {{ settings.site_settings.FooterCTASettings.button_text }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+<footer class="bg-dark py-4 text-light text-md-left text-center cc-footer" >
+  <div class="container">
+    <div class="row mx-lg-n3">
+      <div class="px-lg-3 col-lg-3 col-md-6 col-sm-12">
+        <div class="cc-footer-title">Links</div>
+          {% for item in navigation.menu_items.all %}
+            <a class="cc-footer-link-lg d-block" href="{{ item.link }}" {% if item.open_in_new_tab %}target="_blank"{% endif %}>
+              {{ item.title }}
+            </a>
+          {% endfor %}
+      </div>
+        <div class="px-lg-2 col-lg-3 col-md-6 col-sm-12">
+          <div class="cc-footer-title">Universitäten der Alliance</div>
+          {{ settings.site_settings.PartnerLinks.hours|richtext }}
+        </div>
+        <div class="px-lg-2 col-lg-3 col-md-6 col-sm-12">
+          <div class="cc-footer-title">Förderer</div>
+          {{ settings.site_settings.TextFooter.contact|richtext }}
+        </div>
+        <div class="px-lg-3 col-lg-3 col-md-6 col-sm-12">
+            {% if settings.site_settings.SocialMediaLinks.facebook %}
+              <a href="{{ settings.site_settings.SocialMediaLinks.facebook }}" class="cc-footer-social-icon">
+                <img src="{% static 'images/facebook.svg' %}" alt="Facebook">
+              </a>
+            {% endif %}
+            {% if settings.site_settings.SocialMediaLinks.twitter %}
+              <a href="{{ settings.site_settings.SocialMediaLinks.twitter }}" class="cc-footer-social-icon">
+                <img src="{% static 'images/twitter.svg' %}" alt="Twitter">
+              </a>
+            {% endif %}
+            {% if settings.site_settings.SocialMediaLinks.instagram %}
+              <a href="{{ settings.site_settings.SocialMediaLinks.instagram }}" class="cc-footer-social-icon">
+                <img src="{% static 'images/instagram.svg' %}" alt="Instagram">
+              </a>
+            {% endif %}
+            {% if settings.site_settings.SocialMediaLinks.linkedin %}
+            <a href="{{ settings.site_settings.SocialMediaLinks.linkedin }}" class="cc-footer-social-icon">
+              <img src="{% static 'images/linkedin.svg' %}" alt="Linkedin">
+            </a>
+          {% endif %}
+            {% if settings.site_settings.SocialMediaLinks.youtube %}
+              <a href="{{ settings.site_settings.SocialMediaLinks.youtube }}" class="cc-footer-social-icon">
+                <img src="{% static 'images/youtube.svg' %}" alt="YouTube">
+              </a>
+            {% endif %}
+          <div class="cc-footer-copy">&copy; {% now "Y" %} Berlin Mobility Data Hub</div>
+      </div>
+    </div>
+  </div>
+</footer>

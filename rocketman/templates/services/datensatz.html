@@ -1,0 +1,318 @@
+{% extends 'base.html' %}
+{% load wagtailimages_tags wagtailcore_tags %}
+
+{% block content %}
+  <div class="row my-3">
+    <div class="col-lg-15">
+      <div class="contain">
+      <h1 class="cc-inner-title">{{ page.title }}</h1>
+      </div>
+
+<div class="contain">
+      <p class="cc-inner-subtitle cc-service-subtitle col-lg-12">
+        {{ page.untertitel }}
+      </p>
+</div>
+
+      <div class"my-6>
+    </div>
+      <div class="col-lg-12-pb-20">
+        <picture>
+          {% image page.datensatz_bild fill-1000x400 as img %}
+          <img src="{{ img.url }}" style='width: 100%; height: auto;' alt="{{ img.alt }}">
+        </picture>
+      </div>
+    </div>
+<br>
+
+      <div class="contain">
+        {{ page.Beschreibung }} 
+      </p>
+    </div>
+  <br>
+  <p class="cc-inner-subtitle cc-service-subtitle col-lg-12"> </p>
+    <div class="row my-2"> 
+    </div>
+
+    <div>
+      <div class="contain">
+
+        {% if page.groesse_datensatz %}
+        <p class="cc-inner-subtitle cc-service-subtitle col-lg-20">
+          Größe des Datensatzes: {{ page.groesse_datensatz }} 
+       </p>
+      {% endif %}
+      
+      {% if page.dateiformat %}
+        <p class="cc-inner-subtitle cc-service-subtitle col-lg-20">
+          Dateiformat: {{ page.dateiformat }} 
+       </p>
+      {% endif %}
+      
+      {% if page.anzahl_an_dateien %}
+        <p class="cc-inner-subtitle cc-service-subtitle col-lg-20">
+          Anzahl an Dateien: {{ page.anzahl_an_dateien }} 
+       </p>
+      {% endif %}
+      
+      {% if page.datumhochgeladen %}
+        <p class="cc-inner-subtitle cc-service-subtitle col-lg-20">
+          Hochgeladen am: {{ page.datumhochgeladen }} 
+       </p>
+      {% endif %}
+      
+      {% if page.datum_angepasst %}
+        <p class="cc-inner-subtitle cc-service-subtitle col-lg-20">
+          Zuletzt angepasst: {{ page.datum_angepasst }} 
+       </p>
+      {% endif %}
+      
+      {% if page.version_des_datensatzes %}
+        <p class="cc-inner-subtitle cc-service-subtitle col-lg-20">
+          Derzeitige Version: {{ page.version_des_datensatzes }} 
+       </p>
+      {% endif %}
+
+      {% if page.versions_hist %}
+      <p class="cc-inner-subtitle cc-service-subtitle col-lg-20">
+        Letzte Version: <a href= "{{ page.versions_hist }}"> 
+          {{ page.version_des_datensatzes_alt }} 
+        </a>
+     </p>
+    {% endif %}
+      
+      {% if page.lizens_des_datensatzes %}
+        <p class="cc-inner-subtitle cc-service-subtitle col-lg-20">
+          Nutzbarkeit / Lizens: {{ page.lizens_des_datensatzes }} 
+       </p>
+      {% endif %}
+      
+      {% if page.anfangsdatum %}
+        <p class="cc-inner-subtitle cc-service-subtitle col-lg-20">
+          Anfangsdatum: {{ page.anfangsdatum }} 
+       </p>
+      {% endif %}
+      
+      {% if page.enddatum %}
+        <p class="cc-inner-subtitle cc-service-subtitle col-lg-20">
+          Enddatum: {{ page.enddatum }} 
+       </p>
+      {% endif %}
+      
+      {% if page.ort %}
+        <p class="cc-inner-subtitle cc-service-subtitle col-lg-20">
+          Ort: {{ page.ort }} 
+       </p>
+      {% endif %}
+      
+      {% if page.geometrie %}
+        <p class="cc-inner-subtitle cc-service-subtitle col-lg-20">
+          Geometrie: {{ page.geometrie }} 
+       </p>
+      {% endif %}
+      
+      {% if page.links %}
+        <p class="cc-inner-subtitle cc-service-subtitle col-lg-20">
+          Weiterführende Links: <a href="{{ page.links }}" </a>
+       </p>
+      {% endif %}
+      
+      {% if page.branche %}
+        <p class="cc-inner-subtitle cc-service-subtitle col-lg-20">
+          Branche: {{ page.branche }} 
+       </p>
+      {% endif %}
+      
+      {% if page.update_zyklus %}
+        <p class="cc-inner-subtitle cc-service-subtitle col-lg-20">
+          Regelmäßigkeit von Updates: {{ page.update_zyklus }} 
+       </p>
+      {% endif %}
+      
+      {% if page.publiziert_in %}
+        <p class="cc-inner-subtitle cc-service-subtitle col-lg-20">
+          Publiziert in: {{ page.publiziert_in }} 
+       </p>
+      {% endif %}
+      
+      </div>
+      
+
+{% if page.datensatz_intern %}
+    <div class="my-md-4 my-2">
+      <div class="row text-center">
+        <div class="col">
+          <h3 class="cc-cta-title"></h3>
+          <a href="{{ page.datensatz_intern.url }}" class="btn btn-secondary btn-lg" style='padding-left: 3rem; padding-right: 3rem;'>{{ page.title }} als internen Datensatz herunterladen</a>
+        </div>
+      </div>
+    </div>
+{% endif %}
+
+{% if page.datensatz_extern %}
+    <div class="my-md-4 my-2">
+      <div class="row text-center">
+        <div class="col">
+          <h3 class="cc-cta-title"></h3>
+          <a href="{{ page.datensatz_extern }}" class="btn btn-secondary btn-lg" style='padding-left: 3rem; padding-right: 3rem;'>{{ page.title }} als externen Datensatz herunterladen</a>
+        </div>
+      </div>
+    </div>
+{% endif %}
+
+
+{% if page.datensatz_referenz %}
+    <div class="my-md-4 my-2">
+      <div class="row text-center">
+        <div class="col">
+          <h3 class="cc-cta-title"></h3>
+          <a href="{{ page.datensatz_referenz }}" class="btn btn-secondary btn-lg" style='padding-left: 3rem; padding-right: 3rem;'>{{ page.title }} als als Referenz herunterladen</a>
+        </div>
+      </div>
+    </div>
+{% endif %}
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+
+
+  <p class="cc-inner-subtitle cc-service-subtitle col-lg-20">
+    {% if self.Datenkategorie %}
+      <div class="col">
+        <h3 class="cc-title-title mb-0">
+          Datenkategorie:
+        </h3>
+      <br> <br>
+    {% endif %}
+    
+    <div class="contain">
+       {% for cat in self.Datenkategorie.all %}
+       <button type="button" class="btn btn-outline-secondary" >
+        <a href="{{ self.get_parent.url }}?category={{ cat.slug }}" >{{ cat.slug }} </a>   </button>
+       {% endfor %}
+   </ul>
+  </p>
+</div>
+</div>
+
+</div>
+<div class="col-sm">
+
+<p class="cc-inner-subtitle cc-service-subtitle col-lg-20">
+{% if self.tags.count %}
+  <div class="col">
+    <h3 class="cc-title-title mb-0">
+      Tags:
+    </h3>
+  <br> <br>
+</div>
+<div class="contain">
+    {% for tag in self.tags.all %} 
+    <button type="button" class="btn btn-outline-secondary " >
+        <a href="{{ self.get_parent.url }}?tag={{ tag.slug }}" >{{ tag }} </a> </button> <br>
+    {% endfor %}
+{% endif %}
+</p>
+</div>
+
+
+</div>
+<div class="col-sm">
+
+
+  {% if self.datenquelle %}
+  <p class="cc-inner-subtitle cc-service-subtitle col-lg-20">
+      <div class="col">
+        <h3 class="cc-title-title mb-0">
+          Datenquelle:
+        </h3>
+      <br>
+    </div>
+  {% endif %}
+
+  
+  {% for iter in self.datenquelle.all %}
+  <div class="contain">
+    {% image iter.datenquelle.image fill-50x50 as img %}
+    <div>
+        <img src="{{ img.url }}" class="rounded-circle" alt="{{ iter.datenquelle.name }}">
+    </div>
+    {% if iter.datenquelle.website %}
+    <button type="button" class="btn btn-outline-secondary" >
+      <a href="{{ iter.datenquelle.website }}" >{{ iter.datenquelle.name }} </a>   </button>
+        </a>  <br>  <br>
+    {% else %}
+        {{ iter.datenquelle.name }}  <br>
+    {% endif %}
+
+    {% if iter.datenquelle.ansprech %}
+      <p class="" >
+        {{ iter.datenquelle.ansprech }}
+      </p>
+    {% endif %}
+
+    {% if iter.datenquelle.adresse %}
+        <p class="" >
+    {{ iter.datenquelle.adresse }}
+      </p>
+    {% endif %}
+
+    </div>
+ </div>
+
+
+</div>
+</div>
+</div>
+    
+{% endfor %}
+
+    {% for block in page.body %}
+       {% include_block block %}
+{% endfor %}
+
+<br>
+<p class="cc-inner-subtitle cc-service-subtitle col-lg-20"> </p>
+    <div class="my-md-4 my-2">
+      <div class="row text-center">
+        <div class="col">
+          <h3 class="cc-cta-title"></h3>
+          <a href="{{ page.get_parent.url }}" class="btn btn-secondary btn-lg" style='padding-left: 3rem; padding-right: 3rem;'>Zur Datensatzübersicht</a>
+        </div>
+      </div>
+    </div>
+    {% autoescape off %}
+      {{self.meinepandastable}}
+    {% endautoescape %}
+  <!-- 
+
+  {{ datensatz_intern_url }}
+  {{ datensatz_intern }}
+  {{ page.datensatz_intern_url }}
+
+
+  {{page.datasetInternPandas}}
+  {{datasetInternPandas}}
+
+
+text_file = open("datensatz.html", "w")
+text_file.write(datasetInternHTML)
+text_file.close()
+
+
+
+{{datasetInternHTML}}
+{{page.datasetInternHTML}}
+{{self.datasetInternHTML}}
+
+
+
+{% endblock content %}
+
+
+
+
+-->
+
